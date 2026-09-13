@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Test</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css"
+    >
+</head>
+
+<body>
+
+    <main>
+
+        <h1 id="titulo-test">
+            Test
+        </h1>
+
+        <p id="progreso"></p>
+
+        <div class="barra-progreso">
+            <div id="barra-progreso-relleno"></div>
+        </div>
+
+        <hr>
+
+        <div id="metadatos-pregunta"></div>
+
+        <h2 id="pregunta"></h2>
+
+        <div id="respuestas"></div>
+
+        <div class="navegacion">
+            <button id="anterior">
+                ← Anterior
+            </button>
+
+            <button id="siguiente">
+                Siguiente →
+            </button>
+        </div>
+
+        <hr>
+
+        <div class="acciones">
+            <button id="finalizar">
+                Finalizar y exportar
+            </button>
+
+            <button id="reiniciar">
+                Reiniciar test
+            </button>
+        </div>
+
+    </main>
+
+
+    <script>
+
+        // =========================================================
+        // ESTADO GENERAL
+        // =========================================================
+
+        let preguntas = [];
+        let preguntaActual = 0;
+        let respuestasUsuario = {};
+
+        let testId = "test-generico";
+        let tituloTest = "Test";
+
+        let storageKey = "";
+        let storagePreguntaKey = "";
+
+
+        // =========================================================
+        // CARGAR TEST DESDE LA API
+        // =========================================================
+
+        async function cargarPreguntas() {
+
+            try {
+
+                const response =
+                    await fetch("/api/questions");
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        `Error HTTP: ${response.status}`
+                    );
+
+                }
+
+
+                const datos =
+                    await response.json();
+
+
+                /*
+                    Soportamos dos formatos.
+
+                    FORMATO SIMPLE:
+
+                    [
+                        {...},
+                        {...}
+                    ]
+
+
+                    FORMATO RECOMENDADO:
+
+                    {
+                        "test_id": "lpic-1",
+                        "titulo": "LPIC-1 Diagnóstico",
+                        "preguntas": [
+                            {...},
+                            {...}
+                        ]
+                    }
+                */
+
+
+                if (Array.isArray(datos)) {
+
+                    preguntas = datos;
+                    testId = "test-generico";
+                    tituloTest = "Test";
+
+                } else {
+
+                    preguntas =
+                        datos.preguntas || [];
+
+                    testId =
+                        datos.test_id || "test-generico";
+
+                    tituloTest =
+                        datos.titulo || "Test";
+
+                }
+
+
+                document
+                    .getElementById("titulo-test")
+                    .textContent = tituloTest;
+
+                document.title = tituloTest;
+
+
+                // =================================================
+                // CLAVES DE LOCALSTORAGE
+                // =================================================
+
+                storageKey =
+                    `respuestas_${testId}`;
+
+                storagePreguntaKey =
+                    `pregunta_actual_${testId}`;
+
+
+                // =================================================
+                // RECUPERAR RESPUESTAS
+                // =================================================
+
+                respuestasUsuario =
+                    JSON.parse(
+                        localStorage.getItem(storageKey)
+                    ) || {};
+
+
+                const preguntaGuardada =
+                    localStorage.getItem(
+                        storagePreguntaKey
+                    );
+
+
+                if (preguntaGuardada !== null) {
+
+                    preguntaActual =
+                        Number(preguntaGuardada);
+
+                }
+
+
+                if (
+                    preguntaActual < 0 ||
+                    preguntaActual >= preguntas.length
+                ) {
+
+                    preguntaActual = 0;
+
+                }
+
+
+                mostrarPregunta();
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Error cargando preguntas:",
+                    error
+                );
+
+                document
+                    .getElementById("pregunta")
+                    .textContent =
+                        "No se pudieron cargar las preguntas.";
+
+            }
+
+        }
+
+
+
+        // =========================================================
+        // MOSTRAR PREGUNTA
+        // =========================================================
+
+        function mostrarPregunta() {
+
+            if (preguntas.length === 0) {
+
+                document
+                    .getElementById("pregunta")
+                    .textContent =
+                        "No hay preguntas disponibles.";
+
+                return;
+
+            }
+
+
+            const pregunta =
+                preguntas[preguntaActual];
+
+
+            // =====================================================
+            // PROGRESO
+            // =====================================================
+
+            document
+                .getElementById("progreso")
+                .textContent =
+                    `Pregunta ${preguntaActual + 1} de ${preguntas.length}`;
+
+
+            const porcentaje =
+                ((preguntaActual + 1) / preguntas.length) * 100;
+
+
+            document
+                .getElementById("barra-progreso-relleno")
+                .style.width =
+                    `${porcentaje}%`;
+
+
+            // =====================================================
+            // METADATOS
+            // =====================================================
+
+            const metadatos =
+                document.getElementById(
+                    "metadatos-pregunta"
+                );
+
+            metadatos.innerHTML = "";
+
+
+            if (pregunta.examen) {
+
+                const badgeExamen =
+                    document.createElement("span");
+
+                badgeExamen.className = "badge";
+                badgeExamen.textContent =
+                    pregunta.examen;
+
+                metadatos.appendChild(
+                    badgeExamen
+                );
+
+            }
+
+
+            if (pregunta.tema) {
+
+                const badgeTema =
+                    document.createElement("span");
+
+                badgeTema.className =
+                    "badge badge-secundario";
+
+                badgeTema.textContent =
+                    pregunta.tema;
+
+                metadatos.appendChild(
+                    badgeTema
+                );
+
+            }
+
+
+            // =====================================================
+            // TEXTO DE LA PREGUNTA
+            // =====================================================
+
+            document
+                .getElementById("pregunta")
+                .textContent =
+                    pregunta.pregunta;
+
+
+            const respuestasDiv =
+                document.getElementById(
+                    "respuestas"
+                );
+
+            respuestasDiv.innerHTML = "";
+
+
+            // =====================================================
+            // MULTIPLE CHOICE
+            // =====================================================
+
+            if (
+                pregunta.tipo ===
+                "multiple_choice"
+            ) {
+
+                for (
+                    const [letra, texto]
+                    of Object.entries(
+                        pregunta.opciones || {}
+                    )
+                ) {
+
+                    const contenedor =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    const label =
+                        document.createElement(
+                            "label"
+                        );
+
+
+                    const input =
+                        document.createElement(
+                            "input"
+                        );
+
+
+                    input.type = "radio";
+                    input.name = "respuesta";
+                    input.value = letra;
+
+
+                    if (
+                        respuestasUsuario[
+                            pregunta.id
+                        ] === letra
+                    ) {
+
+                        input.checked = true;
+
+                    }
+
+
+                    input.addEventListener(
+                        "change",
+                        function () {
+
+                            guardarRespuesta(
+                                pregunta.id,
+                                this.value
+                            );
+
+                        }
+                    );
+
+
+                    const strong =
+                        document.createElement(
+                            "strong"
+                        );
+
+                    strong.textContent =
+                        `${letra} `;
+
+
+                    label.appendChild(input);
+                    label.appendChild(strong);
+
+                    label.appendChild(
+                        document.createTextNode(
+                            texto
+                        )
+                    );
+
+
+                    contenedor.appendChild(
+                        label
+                    );
+
+
+                    respuestasDiv.appendChild(
+                        contenedor
+                    );
+
+                }
+
+
+
+                // =================================================
+                // OPCIÓN NO SÉ
+                // =================================================
+
+                const contenedorNS =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                const labelNS =
+                    document.createElement(
+                        "label"
+                    );
+
+
+                const inputNS =
+                    document.createElement(
+                        "input"
+                    );
+
+
+                inputNS.type = "radio";
+                inputNS.name = "respuesta";
+                inputNS.value = "NS";
+
+
+                if (
+                    respuestasUsuario[
+                        pregunta.id
+                    ] === "NS"
+                ) {
+
+                    inputNS.checked = true;
+
+                }
+
+
+                inputNS.addEventListener(
+                    "change",
+                    function () {
+
+                        guardarRespuesta(
+                            pregunta.id,
+                            "NS"
+                        );
+
+                    }
+                );
+
+
+                const strongNS =
+                    document.createElement(
+                        "strong"
+                    );
+
+                strongNS.textContent =
+                    "NS ";
+
+
+                labelNS.appendChild(
+                    inputNS
+                );
+
+                labelNS.appendChild(
+                    strongNS
+                );
+
+                labelNS.appendChild(
+                    document.createTextNode(
+                        "No sé"
+                    )
+                );
+
+
+                contenedorNS.appendChild(
+                    labelNS
+                );
+
+
+                respuestasDiv.appendChild(
+                    contenedorNS
+                );
+
+            }
+
+
+
+            // =====================================================
+            // RESPUESTA ABIERTA
+            // =====================================================
+
+            if (
+                pregunta.tipo === "text"
+            ) {
+
+                const textarea =
+                    document.createElement(
+                        "textarea"
+                    );
+
+
+                textarea.rows = 5;
+
+                textarea.placeholder =
+                    "Escribe tu respuesta...";
+
+
+                const respuestaGuardada =
+                    respuestasUsuario[
+                        pregunta.id
+                    ];
+
+
+                if (
+                    respuestaGuardada &&
+                    respuestaGuardada !== "NS"
+                ) {
+
+                    textarea.value =
+                        respuestaGuardada;
+
+                }
+
+
+                const mensajeNS =
+                    document.createElement(
+                        "p"
+                    );
+
+
+                if (
+                    respuestaGuardada === "NS"
+                ) {
+
+                    mensajeNS.textContent =
+                        "Respuesta marcada como: No sé";
+
+                }
+
+
+                textarea.addEventListener(
+                    "input",
+                    function () {
+
+                        guardarRespuesta(
+                            pregunta.id,
+                            this.value
+                        );
+
+                        mensajeNS.textContent = "";
+
+                    }
+                );
+
+
+                respuestasDiv.appendChild(
+                    textarea
+                );
+
+
+                const botonNS =
+                    document.createElement(
+                        "button"
+                    );
+
+
+                botonNS.textContent =
+                    "No sé";
+
+                botonNS.type = "button";
+                botonNS.className = "boton-ns";
+
+
+                botonNS.addEventListener(
+                    "click",
+                    function () {
+
+                        textarea.value = "";
+
+                        guardarRespuesta(
+                            pregunta.id,
+                            "NS"
+                        );
+
+                        mensajeNS.textContent =
+                            "Respuesta marcada como: No sé";
+
+                    }
+                );
+
+
+                respuestasDiv.appendChild(
+                    botonNS
+                );
+
+
+                respuestasDiv.appendChild(
+                    mensajeNS
+                );
+
+            }
+
+
+
+            // =====================================================
+            // BOTONES NAVEGACIÓN
+            // =====================================================
+
+            document
+                .getElementById("anterior")
+                .disabled =
+                    preguntaActual === 0;
+
+
+            document
+                .getElementById("siguiente")
+                .disabled =
+                    preguntaActual ===
+                    preguntas.length - 1;
+
+
+            localStorage.setItem(
+                storagePreguntaKey,
+                preguntaActual
+            );
+
+        }
+
+
+
+        // =========================================================
+        // GUARDAR RESPUESTA
+        // =========================================================
+
+        function guardarRespuesta(
+            preguntaId,
+            respuesta
+        ) {
+
+            respuestasUsuario[
+                preguntaId
+            ] = respuesta;
+
+
+            localStorage.setItem(
+                storageKey,
+                JSON.stringify(
+                    respuestasUsuario
+                )
+            );
+
+        }
+
+
+
+        // =========================================================
+        // SIGUIENTE
+        // =========================================================
+
+        document
+            .getElementById("siguiente")
+            .addEventListener(
+                "click",
+                function () {
+
+                    if (
+                        preguntaActual <
+                        preguntas.length - 1
+                    ) {
+
+                        preguntaActual++;
+
+                        mostrarPregunta();
+
+                        window.scrollTo({
+                            top: 0,
+                            behavior: "smooth"
+                        });
+
+                    }
+
+                }
+            );
+
+
+
+        // =========================================================
+        // ANTERIOR
+        // =========================================================
+
+        document
+            .getElementById("anterior")
+            .addEventListener(
+                "click",
+                function () {
+
+                    if (
+                        preguntaActual > 0
+                    ) {
+
+                        preguntaActual--;
+
+                        mostrarPregunta();
+
+                        window.scrollTo({
+                            top: 0,
+                            behavior: "smooth"
+                        });
+
+                    }
+
+                }
+            );
+
+
+
+        // =========================================================
+        // EXPORTAR RESPUESTAS
+        // =========================================================
+
+        document
+            .getElementById("finalizar")
+            .addEventListener(
+                "click",
+                function () {
+
+                    const resultado = {
+
+                        test_id:
+                            testId,
+
+                        titulo:
+                            tituloTest,
+
+                        fecha:
+                            new Date()
+                                .toISOString(),
+
+                        total_preguntas:
+                            preguntas.length,
+
+                        total_respondidas:
+                            Object.keys(
+                                respuestasUsuario
+                            ).length,
+
+                        respuestas: preguntas.map(
+                            pregunta => {
+
+                                return {
+
+                                    id:
+                                        pregunta.id,
+
+                                    examen:
+                                        pregunta.examen
+                                        || null,
+
+                                    tema:
+                                        pregunta.tema
+                                        || null,
+
+                                    pregunta:
+                                        pregunta.pregunta,
+
+                                    respuesta:
+                                        respuestasUsuario[
+                                            pregunta.id
+                                        ] ?? null
+
+                                };
+
+                            }
+                        )
+
+                    };
+
+
+                    const contenido =
+                        JSON.stringify(
+                            resultado,
+                            null,
+                            2
+                        );
+
+
+                    const blob =
+                        new Blob(
+                            [contenido],
+                            {
+                                type:
+                                    "application/json"
+                            }
+                        );
+
+
+                    const url =
+                        URL.createObjectURL(
+                            blob
+                        );
+
+
+                    const enlace =
+                        document.createElement(
+                            "a"
+                        );
+
+
+                    enlace.href = url;
+
+                    enlace.download =
+                        `${testId}_respuestas.json`;
+
+                    enlace.click();
+
+
+                    URL.revokeObjectURL(
+                        url
+                    );
+
+                }
+            );
+
+
+
+        // =========================================================
+        // REINICIAR TEST
+        // =========================================================
+
+        document
+            .getElementById("reiniciar")
+            .addEventListener(
+                "click",
+                function () {
+
+                    const confirmar =
+                        confirm(
+                            "¿Seguro que quieres borrar todas las respuestas?"
+                        );
+
+
+                    if (!confirmar) {
+
+                        return;
+
+                    }
+
+
+                    respuestasUsuario = {};
+                    preguntaActual = 0;
+
+
+                    localStorage.removeItem(
+                        storageKey
+                    );
+
+
+                    localStorage.removeItem(
+                        storagePreguntaKey
+                    );
+
+
+                    mostrarPregunta();
+
+                }
+            );
+
+
+
+        // =========================================================
+        // ARRANQUE
+        // =========================================================
+
+        cargarPreguntas();
+
+    </script>
+
+</body>
+
+</html>

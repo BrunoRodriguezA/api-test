@@ -1,0 +1,39 @@
+{
+  "test_id": "lpic-1",
+  "titulo": "LPIC-1 Test",
+  "preguntas": [
+    {
+      "id": 1,
+      "examen": "101-500",
+      "tema": "Arquitectura del sistema",
+      "pregunta": "¿Qué muestra el comando lsmod?",
+      "tipo": "multiple_choice",
+      "opciones": {
+        "A": "Procesos cargados en RAM",
+        "B": "Módulos cargados en el kernel",
+        "C": "Sistemas de archivos montados",
+        "D": "Servicios de systemd"
+      }
+    },
+    {
+      "id": 2,
+      "examen": "101-500",
+      "tema": "Arquitectura del sistema",
+      "pregunta": "¿Qué directorio virtual contiene información sobre procesos y el kernel?",
+      "tipo": "multiple_choice",
+      "opciones": {
+        "A": "/var",
+        "B": "/proc",
+        "C": "/boot",
+        "D": "/opt"
+      }
+    },
+    {
+      "id": 3,
+      "examen": "101-500",
+      "tema": "GNU y comandos Unix",
+      "pregunta": "Explica brevemente qué hace el operador >> en Bash.",
+      "tipo": "text"
+    }
+  ]
+}

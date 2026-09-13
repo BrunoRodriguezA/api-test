@@ -1,0 +1,15 @@
+# Entorno virtual y cachés de Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# Configuración local y secretos
+.env
+.env.*
+!.env.example
+
+# Archivos del editor y sistema
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
