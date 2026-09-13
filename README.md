@@ -4,21 +4,32 @@ Aplicación local para practicar y preparar certificaciones, construida con Fast
 HTML, CSS y JavaScript vanilla. Las soluciones permanecen en el backend y no
 se envían al navegador hasta corregir un intento.
 
+## Estado actual
+
+| Curso | Tests | Preguntas |
+| --- | ---: | ---: |
+| CCNA 200-301 v1.1 | 5 | 105 |
+| ISC2 Certified in Cybersecurity | 6 | 125 |
+| LPIC-1 101-500 y 102-500 | 7 | 180 |
+| **Total** | **18** | **410** |
+
+## Características
+
+- Catálogo organizado primero por certificación y después por test.
+- Diagnósticos iniciales, prácticas por niveles y simulacros mixtos.
+- Preguntas de selección múltiple con corrección automática y ejercicios de
+  respuesta manual con orientación para revisarlos.
+- Progreso independiente por test, guardado localmente en el navegador.
+- Resultados globales y desglose de aciertos por examen y por tema.
+- Revisión explicada de cada pregunta al finalizar un intento.
+- API que mantiene las soluciones fuera del navegador hasta la corrección.
+
 ## Estructura
 
 ```text
 api-test/
 ├── app.py
 ├── data/
-│   ├── lpic-1/
-│   │   ├── preguntas.json
-│   │   └── soluciones.json
-│   ├── lpic-1-nivel-1/
-│   ├── lpic-1-nivel-2/
-│   ├── lpic-1-nivel-3/
-│   ├── lpic-1-nivel-4/
-│   ├── lpic-1-simulacro-101/
-│   ├── lpic-1-simulacro-102/
 │   ├── ccna-diagnostico/
 │   ├── ccna-nivel-1/
 │   ├── ccna-nivel-2/
@@ -30,7 +41,13 @@ api-test/
 │   ├── isc2-cc-nivel-3/
 │   ├── isc2-cc-simulacro-1/
 │   ├── isc2-cc-simulacro-2/
-│   └── otro-test/
+│   ├── lpic-1/
+│   ├── lpic-1-nivel-1/
+│   ├── lpic-1-nivel-2/
+│   ├── lpic-1-nivel-3/
+│   ├── lpic-1-nivel-4/
+│   ├── lpic-1-simulacro-101/
+│   └── lpic-1-simulacro-102/
 │       ├── preguntas.json
 │       └── soluciones.json
 ├── respuestas/
@@ -75,7 +92,8 @@ Abre `http://127.0.0.1:8000`. La documentación interactiva está disponible en
   `respuestas/<test_id>/`.
 
 Las respuestas en curso se almacenan en `localStorage` bajo una clave distinta
-para cada `test_id`.
+para cada `test_id`. Los intentos corregidos se guardan en `respuestas/`, pero
+sus archivos JSON están excluidos de Git para no publicar resultados personales.
 
 ## Recorrido CCNA
 
