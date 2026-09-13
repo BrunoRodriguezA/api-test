@@ -1,0 +1,17 @@
+{
+  "1":{"tipo":"multiple_choice","correcta":"A","explicacion":"Primero se selecciona la coincidencia de prefijo más larga; si varias fuentes ofrecen ese prefijo se compara AD y después la métrica del protocolo."},
+  "2":{"tipo":"multiple_choice","correcta":"A","explicacion":"Una estática flotante usa una AD superior a la ruta dinámica principal y entra en la tabla si esta desaparece."},
+  "3":{"tipo":"manual","respuesta_esperada":"ip route 0.0.0.0 0.0.0.0 198.51.100.1; ipv6 route ::/0 2001:db8:1::1","orientacion":"ip route 0.0.0.0 0.0.0.0 198.51.100.1\nipv6 route ::/0 2001:db8:1::1","explicacion":"0.0.0.0/0 y ::/0 son los prefijos menos específicos y se usan cuando ninguna ruta más concreta coincide."},
+  "4":{"tipo":"multiple_choice","correcta":"A","explicacion":"OSPF suma costes de interfaces. El coste por defecto deriva de un ancho de banda de referencia dividido por el de la interfaz."},
+  "5":{"tipo":"multiple_choice","correcta":"A","explicacion":"Área, máscara en redes multiacceso, hello/dead, autenticación y flags relevantes deben ser compatibles. Los Router ID deben ser únicos."},
+  "6":{"tipo":"manual","respuesta_esperada":"router ospf 1; router-id 1.1.1.1; network 10.10.0.0 0.0.255.255 area 0","orientacion":"router ospf 1\nrouter-id 1.1.1.1\nnetwork 10.10.0.0 0.0.255.255 area 0","explicacion":"La process ID es local. La wildcard /16 es 0.0.255.255 y selecciona interfaces cuyas direcciones coincidan."},
+  "7":{"tipo":"multiple_choice","correcta":"A","explicacion":"Full indica bases de estado de enlace sincronizadas. En redes broadcast los routers DROTHER pueden permanecer 2-Way entre sí."},
+  "8":{"tipo":"multiple_choice","correcta":"A","explicacion":"El Active posee la MAC/IP virtual y reenvía. Standby está preparado para asumir el rol tras un fallo."},
+  "9":{"tipo":"multiple_choice","correcta":"A","explicacion":"DORA resume Discover, Offer, Request y ACK. Los primeros mensajes suelen usar broadcast porque el cliente aún no tiene IP."},
+  "10":{"tipo":"multiple_choice","correcta":"A","explicacion":"Inside local es la dirección real del host interno; inside global es cómo se representa hacia el exterior."},
+  "11":{"tipo":"manual","respuesta_esperada":"access-list 1 permit 10.0.0.0 0.0.0.255; interface gi0/0: ip nat inside; interface gi0/1: ip nat outside; ip nat inside source list 1 interface gi0/1 overload","orientacion":"access-list 1 permit 10.0.0.0 0.0.0.255\ninterface gi0/0 → ip nat inside\ninterface gi0/1 → ip nat outside\nip nat inside source list 1 interface gi0/1 overload","explicacion":"La ACL identifica orígenes traducibles, las interfaces definen lados NAT y overload habilita PAT con la IP exterior."},
+  "12":{"tipo":"multiple_choice","correcta":"A","explicacion":"Stratum 1 está conectado directamente a una referencia stratum 0. Stratum 16 significa no sincronizado."},
+  "13":{"tipo":"multiple_choice","correcta":"A","explicacion":"SNMPv3 puede autenticar y cifrar con authPriv. v1/v2c usan communities sin cifrado."},
+  "14":{"tipo":"multiple_choice","correcta":"A","explicacion":"Policing aplica una tasa y descarta o remarca excedentes; shaping los almacena temporalmente para suavizar la salida."},
+  "15":{"tipo":"multiple_choice","correcta":"A","explicacion":"show ip nat translations muestra asociaciones inside/outside local/global y protocolos o puertos cuando hay PAT."}
+}

@@ -1,0 +1,17 @@
+{
+  "1":{"tipo":"multiple_choice","correcta":"A","explicacion":"La vulnerabilidad es la debilidad; la amenaza es quien o lo que puede causarle daño; el exploit materializa su aprovechamiento."},
+  "2":{"tipo":"multiple_choice","correcta":"A","explicacion":"SSH cifra credenciales y sesión. AAA centralizado o usuarios locales evitan depender de una contraseña VTY compartida."},
+  "3":{"tipo":"manual","respuesta_esperada":"username admin secret CLAVE; ip domain-name ejemplo.local; crypto key generate rsa; line vty 0 15; login local; transport input ssh; ip ssh version 2","orientacion":"username admin secret <clave>\nip domain-name ejemplo.local\ncrypto key generate rsa\nip ssh version 2\nline vty 0 15\n login local\n transport input ssh","explicacion":"IOS necesita hostname/dominio y claves RSA para SSH. login local usa la base de usuarios y transport input ssh excluye Telnet."},
+  "4":{"tipo":"multiple_choice","correcta":"A","explicacion":"Las ACL son secuenciales y first-match. Si nada coincide se aplica el deny any implícito final."},
+  "5":{"tipo":"manual","respuesta_esperada":"ip access-list standard SOLO_ADMIN; permit 192.168.50.0 0.0.0.255; deny any","orientacion":"ip access-list standard SOLO_ADMIN\n permit 192.168.50.0 0.0.0.255\n deny any","explicacion":"La wildcard de /24 es 0.0.0.255. El deny explícito facilita contadores, aunque existe uno implícito."},
+  "6":{"tipo":"multiple_choice","correcta":"A","explicacion":"protect descarta silenciosamente. restrict también registra/contabiliza y shutdown pone el puerto en err-disabled."},
+  "7":{"tipo":"multiple_choice","correcta":"A","explicacion":"DAI valida ARP contra bindings de DHCP snooping o ACL ARP, mitigando suplantación IP-MAC."},
+  "8":{"tipo":"multiple_choice","correcta":"A","explicacion":"SAE reemplaza el intercambio PSK tradicional y dificulta probar contraseñas capturadas sin interacción."},
+  "9":{"tipo":"multiple_choice","correcta":"A","explicacion":"El control plane aprende topología y decide rutas; el data plane reenvía paquetes usando las tablas resultantes."},
+  "10":{"tipo":"multiple_choice","correcta":"A","explicacion":"PUT suele reemplazar el recurso completo y PATCH expresa cambios parciales. La implementación concreta la define la API."},
+  "11":{"tipo":"manual","respuesta_esperada":"GET /api/v1/devices HTTP/1.1; Host: controller.example; Authorization: Bearer <token>; Accept: application/json","orientacion":"GET https://controller.example/api/v1/devices\nAuthorization: Bearer <token>\nAccept: application/json","explicacion":"GET recupera sin modificar; Authorization porta el token y Accept solicita JSON. HTTPS protege credenciales y contenido."},
+  "12":{"tipo":"multiple_choice","correcta":"A","explicacion":"YAML usa sangrado significativo y es frecuente en playbooks. JSON usa llaves/corchetes y XML etiquetas."},
+  "13":{"tipo":"multiple_choice","correcta":"A","explicacion":"Ansible aplica tareas de configuración sin agente; Terraform gestiona infraestructura declarativa y estado."},
+  "14":{"tipo":"multiple_choice","correcta":"A","explicacion":"Con telemetría histórica, ML puede detectar desviaciones y pronosticar demanda o fallos, pero necesita evaluación continua."},
+  "15":{"tipo":"multiple_choice","correcta":"A","explicacion":"La IA generativa puede alucinar sintaxis o asumir topologías inexistentes; se requieren revisión, pruebas, límites y rollback."}
+}

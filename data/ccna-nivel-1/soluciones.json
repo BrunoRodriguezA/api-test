@@ -1,0 +1,17 @@
+{
+  "1":{"tipo":"multiple_choice","correcta":"B","explicacion":"El switching basado en direcciones MAC pertenece a capa 2. Un switch multicapa también puede enrutar en capa 3."},
+  "2":{"tipo":"multiple_choice","correcta":"A","explicacion":"ARP pregunta por la MAC asociada a una IPv4 dentro del segmento. IPv6 usa Neighbor Discovery sobre ICMPv6."},
+  "3":{"tipo":"multiple_choice","correcta":"A","explicacion":"Un extremo full-duplex y otro half-duplex produce colisiones tardías, FCS errors y bajo rendimiento."},
+  "4":{"tipo":"multiple_choice","correcta":"B","explicacion":"Una /27 contiene 32 direcciones; descontando red y broadcast quedan 30 hosts convencionales."},
+  "5":{"tipo":"manual","respuesta_esperada":"Red 10.0.5.64/28; broadcast 10.0.5.79; hosts 10.0.5.65–10.0.5.78.","orientacion":"Red 10.0.5.64/28, broadcast 10.0.5.79 y hosts 10.0.5.65 a 10.0.5.78.","explicacion":"Una /28 avanza en bloques de 16: 64–79 contiene la dirección 77."},
+  "6":{"tipo":"multiple_choice","correcta":"A","explicacion":"SLAAC utiliza Router Advertisements para anunciar prefijo y gateway. DHCPv6 puede complementar DNS u otros parámetros."},
+  "7":{"tipo":"multiple_choice","correcta":"A","explicacion":"El switch registra la MAC origen asociada al puerto de entrada y VLAN; usa la MAC destino para decidir el reenvío."},
+  "8":{"tipo":"multiple_choice","correcta":"A","explicacion":"Cada VLAN es un dominio de broadcast lógico. La comunicación entre VLAN requiere routing."},
+  "9":{"tipo":"manual","respuesta_esperada":"interface gi0/10; switchport mode access; switchport access vlan 20","orientacion":"interface GigabitEthernet0/10\nswitchport mode access\nswitchport access vlan 20","explicacion":"mode access impide negociación trunk y access vlan asigna el puerto. La VLAN debe existir."},
+  "10":{"tipo":"multiple_choice","correcta":"A","explicacion":"La VLAN nativa se envía sin etiqueta de forma predeterminada. Un mismatch puede causar fugas o problemas de STP."},
+  "11":{"tipo":"multiple_choice","correcta":"A","explicacion":"Cada switch no raíz elige un único root port con el mejor camino hacia el root bridge."},
+  "12":{"tipo":"multiple_choice","correcta":"A","explicacion":"PortFast lleva rápidamente puertos de borde a forwarding. En enlaces entre switches puede crear bucles; suele combinarse con BPDU Guard."},
+  "13":{"tipo":"multiple_choice","correcta":"A","explicacion":"LACP es IEEE 802.1AX; PAgP es propietario de Cisco. Ambos negocian agregación."},
+  "14":{"tipo":"multiple_choice","correcta":"A","explicacion":"5 GHz dispone de más espectro y canales, pero suele atenuarse antes que 2,4 GHz."},
+  "15":{"tipo":"manual","respuesta_esperada":"show mac address-table; show interfaces trunk","orientacion":"show mac address-table\nshow interfaces trunk","explicacion":"El primer comando muestra aprendizaje MAC por VLAN/puerto; el segundo resume estado, encapsulación, VLAN nativa y VLAN permitidas de trunks."}
+}

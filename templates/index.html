@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certification Training Lab</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/app.js" defer></script>
+</head>
+<body>
+    <main>
+        <header class="cabecera-principal">
+            <div>
+                <p class="etiqueta-seccion">Preparación de certificaciones</p>
+                <h1 id="titulo-test">Certification Training Lab</h1>
+            </div>
+            <button id="volver-catalogo" type="button" class="secundario oculto">← Todos los cursos</button>
+        </header>
+
+        <section id="vista-catalogo">
+            <p id="introduccion-catalogo" class="introduccion">Practica, mide tu progreso y prepárate para tus próximos exámenes.</p>
+            <div id="lista-tests" class="lista-tests" aria-live="polite"></div>
+            <p id="mensaje-catalogo" class="mensaje" role="status"></p>
+        </section>
+
+        <section id="vista-test" class="oculto">
+            <p id="progreso"></p>
+            <div class="barra-progreso" aria-hidden="true">
+                <div id="barra-progreso-relleno"></div>
+            </div>
+
+            <hr>
+            <div id="metadatos-pregunta"></div>
+            <h2 id="pregunta"></h2>
+            <div id="respuestas"></div>
+
+            <div class="navegacion">
+                <button id="anterior" type="button">← Anterior</button>
+                <button id="siguiente" type="button">Siguiente →</button>
+            </div>
+
+            <hr>
+            <div class="acciones">
+                <button id="finalizar" type="button">Finalizar test</button>
+                <button class="reiniciar" type="button">Reiniciar test</button>
+            </div>
+            <p id="mensaje-test" class="mensaje" role="status"></p>
+        </section>
+
+        <section id="vista-resultados" class="oculto" aria-live="polite">
+            <p class="etiqueta-seccion">Resultado</p>
+            <div class="resultado-principal">
+                <strong id="resultado-fraccion"></strong>
+                <span id="resultado-porcentaje"></span>
+            </div>
+            <div class="barra-progreso barra-resultado" aria-hidden="true">
+                <div id="barra-resultado-relleno"></div>
+            </div>
+
+            <div id="resumen-estadisticas" class="tarjetas-estadisticas"></div>
+
+            <div class="bloques-resultados">
+                <section>
+                    <h2>Por examen</h2>
+                    <div id="resultados-examen"></div>
+                </section>
+                <section>
+                    <h2>Por tema</h2>
+                    <div id="resultados-tema"></div>
+                </section>
+            </div>
+
+            <p id="intento-guardado" class="mensaje-exito"></p>
+            <div class="acciones acciones-resultados">
+                <button id="revisar-incorrectas" type="button">Revisar incorrectas</button>
+                <button id="ver-todas" type="button" class="secundario">Ver todas las respuestas</button>
+                <button class="reiniciar" type="button">Reiniciar test</button>
+            </div>
+        </section>
+
+        <section id="vista-revision" class="oculto">
+            <div class="cabecera-revision">
+                <div>
+                    <p class="etiqueta-seccion">Revisión</p>
+                    <h2 id="titulo-revision"></h2>
+                </div>
+                <button id="volver-resultados" type="button" class="secundario">← Volver al resultado</button>
+            </div>
+            <div id="lista-revision" class="lista-revision"></div>
+        </section>
+    </main>
+</body>
+</html>

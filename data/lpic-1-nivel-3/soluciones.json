@@ -1,0 +1,17 @@
+{
+  "1":{"tipo":"multiple_choice","correcta":"A","explicacion":"$? se expande al estado de salida más reciente; cero suele significar éxito."},
+  "2":{"tipo":"multiple_choice","correcta":"A","explicacion":"El shebang solicita a env localizar bash mediante PATH."},
+  "3":{"tipo":"multiple_choice","correcta":"A","explicacion":"Una Bash interactiva no login lee ~/.bashrc; los perfiles se asocian a shells login."},
+  "4":{"tipo":"manual","respuesta_esperada":"[ -f /etc/hosts ]","orientacion":"[ -f /etc/hosts ] o test -f /etc/hosts","explicacion":"El operador -f es verdadero si la ruta existe y corresponde a un archivo regular."},
+  "5":{"tipo":"multiple_choice","correcta":"A","explicacion":"DISPLAY usa una notación como :0 o host:0.0 para localizar servidor, display y pantalla X."},
+  "6":{"tipo":"multiple_choice","correcta":"A","explicacion":"Los escritorios ofrecen ayudas como lectores de pantalla, ampliación, teclado en pantalla y alto contraste."},
+  "7":{"tipo":"multiple_choice","correcta":"A","explicacion":"/etc/shadow está restringido y separa los hashes del archivo /etc/passwd, normalmente legible."},
+  "8":{"tipo":"multiple_choice","correcta":"A","explicacion":"usermod -g establece el grupo primario; -G administra la lista de grupos suplementarios."},
+  "9":{"tipo":"multiple_choice","correcta":"A","explicacion":"Los cinco campos temporales son minuto, hora, día del mes, mes y día de la semana."},
+  "10":{"tipo":"manual","respuesta_esperada":"30 2 * * * /usr/local/bin/copia","orientacion":"30 2 * * * /usr/local/bin/copia","explicacion":"El primer campo es el minuto y el segundo la hora; los asteriscos permiten todos los días."},
+  "11":{"tipo":"multiple_choice","correcta":"A","explicacion":"journalctl -u filtra las entradas del journal asociadas a una unidad concreta."},
+  "12":{"tipo":"multiple_choice","correcta":"A","explicacion":"/etc/resolv.conf contiene directivas como nameserver y search, aunque puede ser gestionado automáticamente."},
+  "13":{"tipo":"multiple_choice","correcta":"A","explicacion":"timedatectl resume hora local, UTC, zona horaria y sincronización de red."},
+  "14":{"tipo":"multiple_choice","correcta":"A","explicacion":"LANG establece la locale predeterminada; variables LC_* pueden sobrescribir categorías específicas."},
+  "15":{"tipo":"multiple_choice","correcta":"A","explicacion":"postmaster es un alias estándar para incidencias del sistema de correo y debe llegar a una persona responsable."}
+}

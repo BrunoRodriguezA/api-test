@@ -1,0 +1,17 @@
+{
+  "1":{"tipo":"multiple_choice","correcta":"A","explicacion":">> abre el archivo en modo append; > lo trunca antes de escribir."},
+  "2":{"tipo":"multiple_choice","correcta":"A","explicacion":"-t define el separador y -k2,2n limita la clave a la segunda columna con orden numérico."},
+  "3":{"tipo":"multiple_choice","correcta":"A","explicacion":"SIGTERM solicita una terminación ordenada y puede ser gestionada por el proceso."},
+  "4":{"tipo":"multiple_choice","correcta":"A","explicacion":"renice ajusta el valor nice de procesos existentes; nice establece el valor al iniciar una orden."},
+  "5":{"tipo":"multiple_choice","correcta":"A","explicacion":"La clase [0-9] coincide con un dígito y + exige una o más apariciones en ERE."},
+  "6":{"tipo":"manual","respuesta_esperada":"find /var/log -type f -name '*.log' -mtime -7","orientacion":"find /var/log -type f -name '*.log' -mtime -7","explicacion":"-type f restringe a archivos, -name filtra el sufijo y -mtime -7 selecciona menos de siete periodos de 24 horas."},
+  "7":{"tipo":"multiple_choice","correcta":"A","explicacion":":wq escribe el archivo y abandona vi; :q! sale descartando cambios."},
+  "8":{"tipo":"multiple_choice","correcta":"A","explicacion":"mkfs.ext4 crea el sistema de archivos y destruye la estructura anterior del dispositivo indicado."},
+  "9":{"tipo":"multiple_choice","correcta":"A","explicacion":"fstab usa: origen, punto de montaje, tipo, opciones, dump y orden de fsck."},
+  "10":{"tipo":"multiple_choice","correcta":"A","explicacion":"Un symlink guarda una ruta, puede cruzar sistemas de archivos y no garantiza que su destino exista."},
+  "11":{"tipo":"multiple_choice","correcta":"A","explicacion":"SGID en un directorio hace que las entradas nuevas hereden su grupo, facilitando áreas compartidas."},
+  "12":{"tipo":"multiple_choice","correcta":"A","explicacion":"swapon -a activa las entradas swap configuradas, salvo las marcadas noauto."},
+  "13":{"tipo":"multiple_choice","correcta":"A","explicacion":"edquota abre la configuración de cuotas blandas y duras del usuario o grupo."},
+  "14":{"tipo":"multiple_choice","correcta":"A","explicacion":"/etc contiene configuración estática y específica del sistema."},
+  "15":{"tipo":"manual","respuesta_esperada":"chown -R ana:desarrollo /srv/proyecto","orientacion":"chown -R ana:desarrollo /srv/proyecto","explicacion":"chown acepta usuario:grupo y -R aplica el cambio a todo el árbol."}
+}

@@ -1,0 +1,17 @@
+{
+  "1":{"tipo":"multiple_choice","correcta":"A","explicacion":"UEFI sustituye al BIOS en equipos modernos y carga ejecutables EFI desde la partición ESP."},
+  "2":{"tipo":"multiple_choice","correcta":"A","explicacion":"/proc/cpuinfo expone información que el kernel mantiene sobre cada procesador lógico."},
+  "3":{"tipo":"multiple_choice","correcta":"A","explicacion":"lsmod presenta los módulos cargados, su tamaño y relaciones de uso."},
+  "4":{"tipo":"multiple_choice","correcta":"A","explicacion":"modprobe consulta dependencias y reglas de /etc/modprobe.d; insmod trabaja directamente con un archivo."},
+  "5":{"tipo":"multiple_choice","correcta":"A","explicacion":"systemctl get-default devuelve el enlace default.target actualmente configurado."},
+  "6":{"tipo":"manual","respuesta_esperada":"systemctl set-default multi-user.target","orientacion":"systemctl set-default multi-user.target","explicacion":"set-default cambia default.target para futuros arranques; isolate cambiaría el estado de la sesión actual."},
+  "7":{"tipo":"multiple_choice","correcta":"A","explicacion":"/boot aloja los componentes necesarios para iniciar el sistema, incluidos kernel e initramfs."},
+  "8":{"tipo":"multiple_choice","correcta":"A","explicacion":"dpkg -S busca qué paquete instalado es propietario de una ruta."},
+  "9":{"tipo":"multiple_choice","correcta":"A","explicacion":"apt update descarga metadatos de los repositorios; apt upgrade instala actualizaciones."},
+  "10":{"tipo":"multiple_choice","correcta":"A","explicacion":"rpm -q consulta el paquete instalado y devuelve su nombre y versión completa."},
+  "11":{"tipo":"multiple_choice","correcta":"A","explicacion":"DNF es el gestor moderno de paquetes y dependencias de Fedora y sistemas relacionados."},
+  "12":{"tipo":"multiple_choice","correcta":"A","explicacion":"ldconfig lee /etc/ld.so.conf y sus inclusiones para reconstruir enlaces y caché."},
+  "13":{"tipo":"multiple_choice","correcta":"A","explicacion":"dpkg -L lista las rutas pertenecientes a un paquete ya instalado."},
+  "14":{"tipo":"multiple_choice","correcta":"A","explicacion":"Un hipervisor proporciona recursos virtuales y aislamiento a múltiples máquinas invitadas."},
+  "15":{"tipo":"manual","respuesta_esperada":"apt autoremove","orientacion":"apt autoremove","explicacion":"autoremove elimina dependencias marcadas como automáticas que ya no necesita ningún paquete instalado."}
+}

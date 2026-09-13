@@ -1,0 +1,19 @@
+{
+  "test_id":"ccna-nivel-1","curso":"CCNA","titulo":"CCNA · Nivel 1 · Fundamentos y acceso","preguntas":[
+    {"id":1,"examen":"200-301 v1.1 · Nivel 1","tema":"Modelos y protocolos","pregunta":"¿En qué capa OSI opera un switch Ethernet tradicional al reenviar por MAC?","tipo":"multiple_choice","opciones":{"A":"1","B":"2","C":"3","D":"4"}},
+    {"id":2,"examen":"200-301 v1.1 · Nivel 1","tema":"Modelos y protocolos","pregunta":"¿Qué protocolo resuelve una dirección IPv4 conocida a una dirección MAC local?","tipo":"multiple_choice","opciones":{"A":"ARP","B":"DNS","C":"DHCP","D":"ICMP"}},
+    {"id":3,"examen":"200-301 v1.1 · Nivel 1","tema":"Interfaces y cableado","pregunta":"Un contador de late collisions aumenta en un enlace Ethernet. ¿Qué causa es más probable?","tipo":"multiple_choice","opciones":{"A":"Duplex mismatch","B":"Servidor DNS caído","C":"TTL agotado","D":"VLAN nativa correcta"}},
+    {"id":4,"examen":"200-301 v1.1 · Nivel 1","tema":"IPv4 e IPv6","pregunta":"¿Cuántos hosts utilizables ofrece normalmente una subred /27?","tipo":"multiple_choice","opciones":{"A":"14","B":"30","C":"32","D":"62"}},
+    {"id":5,"examen":"200-301 v1.1 · Nivel 1","tema":"IPv4 e IPv6","pregunta":"Para 10.0.5.77/28, calcula red, broadcast y rango de hosts.","tipo":"text"},
+    {"id":6,"examen":"200-301 v1.1 · Nivel 1","tema":"IPv4 e IPv6","pregunta":"¿Qué mecanismo permite a un host IPv6 obtener prefijo y gateway sin un servidor DHCPv6 stateful?","tipo":"multiple_choice","opciones":{"A":"SLAAC mediante Router Advertisements","B":"ARP","C":"PAT","D":"STP"}},
+    {"id":7,"examen":"200-301 v1.1 · Nivel 1","tema":"Switching","pregunta":"¿Qué información aprende dinámicamente un switch de cada trama recibida?","tipo":"multiple_choice","opciones":{"A":"MAC origen y puerto de entrada","B":"MAC destino y puerto de salida","C":"IP origen y gateway","D":"Puerto TCP destino"}},
+    {"id":8,"examen":"200-301 v1.1 · Nivel 1","tema":"VLAN y trunks","pregunta":"¿Cuál es el propósito principal de una VLAN?","tipo":"multiple_choice","opciones":{"A":"Crear dominios de broadcast separados","B":"Aumentar el TTL","C":"Cifrar tramas Ethernet","D":"Sustituir al routing"}},
+    {"id":9,"examen":"200-301 v1.1 · Nivel 1","tema":"VLAN y trunks","pregunta":"Escribe los comandos IOS para configurar Gi0/10 como puerto access de la VLAN 20.","tipo":"text"},
+    {"id":10,"examen":"200-301 v1.1 · Nivel 1","tema":"VLAN y trunks","pregunta":"¿Qué ocurre por defecto con las tramas de la VLAN nativa en un trunk 802.1Q?","tipo":"multiple_choice","opciones":{"A":"Viajan sin etiqueta","B":"Se descartan","C":"Usan doble etiqueta","D":"Se enrutan"}},
+    {"id":11,"examen":"200-301 v1.1 · Nivel 1","tema":"Spanning Tree","pregunta":"¿Qué puerto STP tiene el menor coste hacia el root bridge en un switch no raíz?","tipo":"multiple_choice","opciones":{"A":"Root port","B":"Designated port","C":"Alternate port","D":"Edge port"}},
+    {"id":12,"examen":"200-301 v1.1 · Nivel 1","tema":"Spanning Tree","pregunta":"¿Dónde debe habilitarse normalmente PortFast?","tipo":"multiple_choice","opciones":{"A":"Puertos access hacia hosts finales","B":"Trunks entre switches","C":"Root ports","D":"Enlaces WAN seriales"}},
+    {"id":13,"examen":"200-301 v1.1 · Nivel 1","tema":"EtherChannel","pregunta":"¿Qué protocolo abierto negocia EtherChannel?","tipo":"multiple_choice","opciones":{"A":"LACP","B":"PAgP","C":"DTP","D":"HSRP"}},
+    {"id":14,"examen":"200-301 v1.1 · Nivel 1","tema":"Wireless","pregunta":"¿Qué banda ofrece normalmente más canales no solapados y menos alcance que 2,4 GHz?","tipo":"multiple_choice","opciones":{"A":"5 GHz","B":"900 MHz","C":"AM","D":"Bluetooth exclusivamente"}},
+    {"id":15,"examen":"200-301 v1.1 · Nivel 1","tema":"Verificación IOS","pregunta":"Escribe dos comandos IOS: uno para ver la tabla MAC y otro para comprobar trunks activos.","tipo":"text"}
+  ]
+}

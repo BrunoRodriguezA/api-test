@@ -1,0 +1,17 @@
+{
+  "1":{"tipo":"multiple_choice","correcta":"A","explicacion":"ip address show enumera direcciones, prefijos y estado por interfaz."},
+  "2":{"tipo":"multiple_choice","correcta":"A","explicacion":"La máscara tiene 24 bits del primer trío de octetos más dos bits de 192, por tanto /26."},
+  "3":{"tipo":"multiple_choice","correcta":"A","explicacion":"ip route show presenta rutas, gateways, métricas e interfaces de salida."},
+  "4":{"tipo":"multiple_choice","correcta":"A","explicacion":"-t y -u seleccionan TCP/UDP, -l escucha y -n evita resolución de nombres."},
+  "5":{"tipo":"multiple_choice","correcta":"A","explicacion":"/etc/hosts se consulta localmente según el orden definido en nsswitch.conf."},
+  "6":{"tipo":"multiple_choice","correcta":"A","explicacion":"Los registros MX incluyen prioridad y nombre del servidor que recibe correo para el dominio."},
+  "7":{"tipo":"manual","respuesta_esperada":"ip address add 192.0.2.10/24 dev eth0","orientacion":"ip address add 192.0.2.10/24 dev eth0","explicacion":"La orden modifica el estado activo; la persistencia depende del gestor de red y su configuración."},
+  "8":{"tipo":"multiple_choice","correcta":"A","explicacion":"sudoers define privilegios; visudo bloquea el archivo y valida su sintaxis antes de guardar."},
+  "9":{"tipo":"multiple_choice","correcta":"A","explicacion":"passwd -l antepone un marcador al hash para impedir autenticación por contraseña."},
+  "10":{"tipo":"multiple_choice","correcta":"A","explicacion":"6 equivale a rw-, 4 a r-- y 0 a ---."},
+  "11":{"tipo":"multiple_choice","correcta":"A","explicacion":"PermitRootLogin no deshabilita el acceso SSH directo de root; debe recargarse el servicio tras validar la configuración."},
+  "12":{"tipo":"multiple_choice","correcta":"A","explicacion":"nmap descubre hosts y servicios mediante distintas técnicas de sondeo y escaneo."},
+  "13":{"tipo":"multiple_choice","correcta":"A","explicacion":"gpg --verify valida que la firma corresponde al contenido y a una clave pública conocida."},
+  "14":{"tipo":"multiple_choice","correcta":"A","explicacion":"lastlog resume el último acceso almacenado para cada cuenta."},
+  "15":{"tipo":"manual","respuesta_esperada":"ssh-keygen -t ed25519","orientacion":"ssh-keygen -t ed25519","explicacion":"ssh-keygen crea la clave privada y su clave pública asociada; Ed25519 es un algoritmo moderno."}
+}

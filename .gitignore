@@ -13,3 +13,6 @@ __pycache__/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Intentos generados al finalizar tests
+respuestas/**/*.json
